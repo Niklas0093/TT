@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Übersicht</title> <!-- Titel wird durch JavaScript dynamisch geändert -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#F59E0B',
+                        accent: '#f2541d',
+                        dark: '#1F2937',
+                        darker: '#111827',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-sans bg-dark text-gray-200 flex flex-col min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-darker shadow-md sticky top-0 w-full z-50">
+        <div class="container mx-auto flex items-center justify-between p-4 relative">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-16 w-auto object-contain">
+                </a>
+                <h1 class="text-lg text-white ml-4 font-semibold">Starke Teams, starke Reisen</h1> <!-- Slogan bleibt -->
+            </div>
+
+            <!-- Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                    <li><a href="index.html#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                    <li><a href="index.html#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                    <li><a href="index.html#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <button class="md:hidden text-gray-200 focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hotel Info -->
+    <main class="container mx-auto py-12 px-6">
+        
+        <!-- Hotelname + Sterne -->
+        <div class="text-center mb-6">
+            <h1 id="hotel-name" class="text-4xl font-bold text-white"></h1>
+            <div id="hotel-stars" class="flex justify-center text-yellow-400 text-2xl mt-2"></div>
+        </div>
+
+        <!-- Großes Hotelbild -->
+        <div class="w-full max-w-6xl mx-auto">
+            <img id="hotel-image" class="w-full h-[500px] object-cover rounded-lg border border-gray-600 shadow-lg" src="" alt="">
+        </div>
+
+        <!-- Hotelbeschreibung -->
+        <div class="mt-8 text-white text-center max-w-3xl mx-auto">
+            <p id="hotel-location" class="text-lg text-gray-300 mb-2"></p>
+            <p id="hotel-price" class="text-lg font-semibold mb-4"></p>
+            <p id="hotel-description" class="text-gray-300"></p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darker text-white text-center p-6 mt-auto">
+        <p class="mb-2">&copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.</p>
+        <a href="impressum.html" class="underline hover:text-gray-300">Impressum</a>
+    </footer>
+
+    <script defer src="hotel-overview.js"></script>
+    <script defer src="script.js"></script>
+
+</body>
+</html>

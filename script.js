@@ -25,3 +25,14 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         document.getElementById('success-message').classList.add('hidden');
     }, 3000);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".details-btn");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            const hotelId = this.getAttribute("data-hotel-id");
+            window.location.href = `hotel-overview.html?hotel_id=${hotelId}`;
+        });
+    });
+});
