@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - TeamTravel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#F59E0B',
+                        accent: '#f2541d',
+                        dark: '#1F2937',
+                        darker: '#111827',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="font-sans bg-dark text-gray-200 flex flex-col min-h-screen">
+    
+    <!-- Header -->
+    <header class="bg-darker shadow-md sticky top-0 w-full z-50">
+        <div class="container mx-auto flex items-center justify-between p-4 relative">
+            <!-- Logo & Slogan -->
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-12 w-auto object-contain">
+                </a>
+                <h1 class="text-lg text-primary ml-4 font-semibold">Starke Teams, starke Reisen</h1>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html#deals" class="font-medium hover:text-primary transition-colors"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                    <li><a href="index.html#mannschaftsfahrt" class="font-medium hover:text-primary transition-colors"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                    <li><a href="index.html#trainingslager" class="font-medium hover:text-primary transition-colors"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                    <li><a href="index.html#kontakt" class="font-medium hover:text-primary transition-colors"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <button class="md:hidden text-gray-200 focus:outline-none" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <ul class="bg-darker py-2">
+                <li><a href="index.html#deals" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                <li><a href="index.html#mannschaftsfahrt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                <li><a href="index.html#trainingslager" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                <li><a href="index.html#kontakt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Impressum Inhalt -->
+    <main class="container mx-auto py-16">
+        <h1 class="text-4xl font-bold text-white text-center mb-10 hover:text-accent transition-colors">Impressum</h1>
+        <div class="bg-darker p-8 shadow-lg rounded-lg max-w-2xl mx-auto">
+            <p class="mb-4"><strong>TeamTravel GmbH</strong></p>
+            <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Musterstraße 1, 12345 Musterstadt</p>
+            <p class="mb-2"><i class="fas fa-phone mr-2"></i>Telefon: +49 123 456789</p>
+            <p class="mb-2"><i class="fas fa-envelope mr-2"></i>E-Mail: info@teamtravel.de</p>
+            <p class="mb-2"><i class="fas fa-user mr-2"></i>Geschäftsführer: Max Mustermann</p>
+            <p class="mb-2"><i class="fas fa-balance-scale mr-2"></i>Handelsregister: Amtsgericht Musterstadt, HRB 123456</p>
+            <p><i class="fas fa-id-card mr-2"></i>Umsatzsteuer-ID: DE123456789</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darker text-gray-400 text-center p-6 mt-auto">
+        <a href="index.html" class="underline hover:text-gray-200"><i class="fas fa-home mr-2"></i>Zurück zur Startseite</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
