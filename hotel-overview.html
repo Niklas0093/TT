@@ -26,34 +26,51 @@
             },
         }
     </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        h2, h3 { transition: none !important; }
+        a:hover, header a:hover { color: #f2541d !important; }
+        button { background-color: #f2541d !important; }
+    </style>
 </head>
 <body class="font-sans bg-dark text-gray-200 flex flex-col min-h-screen">
     
-    <!-- Header -->
-    <header class="bg-darker shadow-md sticky top-0 w-full z-50">
-        <div class="container mx-auto flex items-center justify-between p-4 relative">
-            <div class="flex items-center">
-                <a href="index.html">
-                    <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-16 w-auto object-contain">
-                </a>
-                <h1 class="text-lg text-white ml-4 font-semibold">Starke Teams, starke Reisen</h1> <!-- Slogan bleibt -->
-            </div>
-
-            <!-- Navigation -->
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8">
-                    <li><a href="index.html#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
-                    <li><a href="index.html#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
-                    <li><a href="index.html#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
-                    <li><a href="index.html#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+            <!-- Header -->
+            <header class="bg-darker shadow-md sticky top-0 w-full z-50">
+                <div class="container mx-auto flex items-center justify-between p-4 relative">
+                    <div class="flex items-center">
+                        <a href="index.html">
+                            <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-16 w-auto object-contain">
+                        </a>
+                        <h1 class="text-lg text-white ml-4 font-semibold">Starke Teams, starke Reisen</h1>
+                    </div>
+        
+                    <!-- Navigation -->
+                    <nav class="hidden md:block">
+                        <ul class="flex space-x-8">
+                            <li><a href="#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                            <li><a href="#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                            <li><a href="#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                            <li><a href="#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+                        </ul>
+                    </nav>
+        
+                    <button class="md:hidden text-gray-200 focus:outline-none !bg-transparent" id="mobile-menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </header>
+    
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <ul class="bg-darker py-2">
+                    <li><a href="index.html#deals" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                    <li><a href="index.html#mannschaftsfahrt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                    <li><a href="index.html#trainingslager" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                    <li><a href="index.html#kontakt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
                 </ul>
-            </nav>
-
-            <button class="md:hidden text-gray-200 focus:outline-none" id="mobile-menu-button">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+            </div>
+        </header>
 
     <!-- Hotel Info -->
     <main class="container mx-auto py-12 px-6">
