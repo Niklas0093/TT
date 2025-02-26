@@ -130,20 +130,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const resultsContainer = document.getElementById("search-results");
         resultsContainer.innerHTML = hotels.length === 0 ? 
             "<p class='text-white text-center'>🚫 Keine passenden Hotels gefunden.</p>" :
-            hotels.map(hotel => `
-                <div class="relative bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700 transition-transform transform hover:scale-105">
-                    <img src="${hotel.image}" class="w-full h-64 object-cover rounded-lg mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">${hotel.name}</h3>
-                    <p class="text-gray-400">📍 ${hotel.location}, ${hotel.country}</p>
-                    <p class="text-gray-400">⭐ ${hotel.stars} Sterne | 🏆 ${hotel.rating.toFixed(1)}</p>
-                    <p class="text-gray-400">💰 ${hotel.price}€ p.P./Nacht</p>
-                    <p class="text-gray-400 mb-2">🏊‍♂️ Ausstattung: ${hotel.facilities.join(", ")}</p>
-                    <button class="details-btn bg-primary text-white px-4 py-2 rounded-lg w-full mt-2" data-hotel-id="${hotel.hotel_id}">
-                        <i class="fas fa-info-circle"></i> Details
-                    </button>
-                </div>
-            `).join('');
+            hotels.map(hotel => {
+                const params = new URLSearchParams({
+                    hotel_id: hotel.hotel_id,
+                    start_date: document.getElementById("filter-start-date").value || "",
+                    end_date: document.getElementById("filter-end-date").value || "",
+                    group_size: document.getElementById("filter-group-size").value || 6,
+                    country: document.getElementById("filter-country").value || "",
+                    trip_type: document.getElementById("filter-trip-type").value || "",
+                }).toString();
+    
+                return `
+                    <div class="relative bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700 transition-transform transform hover:scale-105">
+                        <img src="${hotel.image}" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-bold text-white mb-2">${hotel.name}</h3>
+                        <p class="text-gray-400">📍 ${hotel.location}, ${hotel.country}</p>
+                        <p class="text-gray-400">⭐ ${hotel.stars} Sterne | 🏆 ${hotel.rating.toFixed(1)}</p>
+                        <p class="text-gray-400">💰 ${hotel.price}€ p.P./Nacht</p>
+                        <p class="text-gray-400 mb-2">🏊‍♂️ Ausstattung: ${hotel.facilities.join(", ")}</p>
+                        <button class="details-btn bg-primary text-white px-4 py-2 rounded-lg w-full mt-2" 
+                            onclick="window.location.href='hotel-overview.html?${params}'">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                    </div>
+                `;
+            }).join('');
     }
+    
 
     // Automatische Filteraktualisierung bei Änderungen
     const filterElements = [

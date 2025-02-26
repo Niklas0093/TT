@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Übersicht</title> <!-- Titel wird durch JavaScript dynamisch geändert -->
+    <title>Hotel Übersicht</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -35,42 +35,17 @@
 </head>
 <body class="font-sans bg-dark text-gray-200 flex flex-col min-h-screen">
     
-            <!-- Header -->
-            <header class="bg-darker shadow-md sticky top-0 w-full z-50">
-                <div class="container mx-auto flex items-center justify-between p-4 relative">
-                    <div class="flex items-center">
-                        <a href="index.html">
-                            <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-16 w-auto object-contain">
-                        </a>
-                        <h1 class="text-lg text-white ml-4 font-semibold">Starke Teams, starke Reisen</h1>
-                    </div>
-        
-                    <!-- Navigation -->
-                    <nav class="hidden md:block">
-                        <ul class="flex space-x-8">
-                            <li><a href="#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
-                            <li><a href="#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
-                            <li><a href="#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
-                            <li><a href="#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
-                        </ul>
-                    </nav>
-        
-                    <button class="md:hidden text-gray-200 focus:outline-none !bg-transparent" id="mobile-menu-button">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </header>
-    
-            <!-- Mobile menu -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <ul class="bg-darker py-2">
-                    <li><a href="index.html#deals" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-tag mr-2"></i>Deals</a></li>
-                    <li><a href="index.html#mannschaftsfahrt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
-                    <li><a href="index.html#trainingslager" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
-                    <li><a href="index.html#kontakt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
-                </ul>
+    <!-- Header -->
+    <header class="bg-darker shadow-md sticky top-0 w-full z-50">
+        <div class="container mx-auto flex items-center justify-between p-4 relative">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-16 w-auto object-contain">
+                </a>
+                <h1 class="text-lg text-white ml-4 font-semibold">Starke Teams, starke Reisen</h1>
             </div>
-        </header>
+        </div>
+    </header>
 
     <!-- Hotel Info -->
     <main class="container mx-auto py-12 px-6">
@@ -91,6 +66,21 @@
             <p id="hotel-location" class="text-lg text-gray-300 mb-2"></p>
             <p id="hotel-price" class="text-lg font-semibold mb-4"></p>
             <p id="hotel-description" class="text-gray-300"></p>
+        </div>
+
+        <!-- Suchparameter Anzeige -->
+        <div id="booking-details" class="bg-gray-800 p-4 rounded-lg mt-6 text-white text-center hidden">
+            <h2 class="text-lg font-bold mb-2">Ihre Buchungsdetails</h2>
+            <p><strong>Zeitraum:</strong> <span id="booking-dates">Nicht angegeben</span></p>
+            <p><strong>Gruppengröße:</strong> <span id="booking-group-size">Nicht angegeben</span> Personen</p>
+            <p><strong>Reiseart:</strong> <span id="booking-trip-type">Nicht angegeben</span></p>
+        </div>
+
+        <!-- Buchungsbutton -->
+        <div class="text-center mt-6">
+            <a id="booking-button" class="bg-secondary text-white px-6 py-3 rounded-lg mt-4 inline-block hover:bg-opacity-90 transition">
+                Jetzt buchen
+            </a>
         </div>
 
     </main>
