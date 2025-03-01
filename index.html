@@ -146,19 +146,47 @@ style="background-image: url('assets/images/Background.png');">
         </div>
     </section>
     
+<!-- Mannschaftsfahrt Section -->
+<section id="mannschaftsfahrt" class="container mx-auto py-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <!-- Bild Links -->
+    <div class="flex justify-center">
+        <img src="assets/images/mannschaftsfahrt.jpg" 
+             alt="Mannschaftsfahrt" 
+             class="w-full max-w-[600px] h-auto object-contain rounded-2xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl">
+    </div>
+    <!-- Text Rechts -->
+    <div class="flex flex-col max-w-[600px] mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-4 text-center md:text-left">Mannschaftsfahrt</h2>
+        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+            Die Mannschaftsfahrt ist die perfekte Gelegenheit, den Teamgeist zu stärken und unvergessliche Erlebnisse zu teilen. 
+            Abseits des Spielfelds warten aufregende Aktivitäten, gemeinsame Abendessen und viel Spaß. 
+            Ob im Strandhotel oder in den Bergen – hier steht die Gemeinschaft im Vordergrund. 
+            Freut euch auf sportliche Herausforderungen, entspannte Stunden und eine Reise, die das Team zusammenschweißt!
+        </p>
+    </div>
+</section>
 
+<!-- Trainingslager Section -->
+<section id="trainingslager" class="container mx-auto py-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <!-- Text Links -->
+    <div class="flex flex-col max-w-[600px] mx-auto order-2 md:order-1">
+        <h2 class="text-3xl font-bold text-white mb-4 text-left">Trainingslager</h2>
+        <p class="text-gray-300 text-lg leading-relaxed text-justify">
+            Ein Trainingslager bietet die ideale Möglichkeit, sich optimal auf kommende Wettkämpfe vorzubereiten. 
+            Hier treffen professionelle Trainingsbedingungen auf erstklassige Unterkünfte. 
+            Nutzt die Zeit für intensive Trainingseinheiten, Teambuilding-Aktivitäten und regenerierende Pausen. 
+            Perfekt für ambitionierte Teams, die das nächste Level erreichen wollen. 
+            Ein Aufenthalt im Trainingslager verbindet Leistung und Erholung in einer einzigartigen Kombination!
+        </p>
+    </div>
+    <!-- Bild Rechts -->
+    <div class="flex justify-center order-1 md:order-2">
+        <img src="assets/images/traningslager.jpg" 
+             alt="Trainingslager" 
+             class="w-full max-w-[600px] h-auto object-contain rounded-2xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 hover:shadow-2xl">
+    </div>
+</section>
 
-    <!-- Mannschaftsfahrt -->
-    <section id="mannschaftsfahrt" class="container mx-auto py-16">
-        <h2 class="text-center text-3xl font-bold text-white mb-6 scroll-mt-20">Mannschaftsfahrt</h2>
-        <p class="text-center text-gray-400 max-w-2xl mx-auto">Perfekte Gruppenreisen für Sportmannschaften, um gemeinsam unvergessliche Erlebnisse zu schaffen. Stärken Sie den Teamgeist und genießen Sie die Zeit abseits des Spielfelds.</p>
-    </section>
-
-    <!-- Trainingslager -->
-    <section id="trainingslager" class="container mx-auto py-16">
-        <h2 class="text-center text-3xl font-bold text-white mb-6 scroll-mt-20">Trainingslager</h2>
-        <p class="text-center text-gray-400 max-w-2xl mx-auto">Ideal für Teams, die sich optimal auf kommende Wettkämpfe vorbereiten möchten. Profitieren Sie von erstklassigen Trainingseinrichtungen und maßgeschneiderten Programmen.</p>
-    </section>
 
     <!-- Kontaktformular -->
     <section id="kontakt" class="container mx-auto py-16">
@@ -189,11 +217,41 @@ style="background-image: url('assets/images/Background.png');">
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-darker text-white text-center p-6 mt-auto">
-        <p class="mb-2">&copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.</p>
-        <a href="impressum.html" class="underline hover:text-gray-300">Impressum</a>
-    </footer>
+<!-- Footer -->
+<footer class="bg-darker text-white p-8 mt-auto">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0">
+        
+        <!-- Schnelllinks Links -->
+        <div class="flex flex-col items-start">
+            <h3 class="text-lg font-semibold mb-2">Schnelllinks</h3>
+            <ul class="space-y-1 text-sm">
+                <li><a href="#deals" class="underline hover:text-gray-300">Top Deals</a></li>
+                <li><a href="#mannschaftsfahrt" class="underline hover:text-gray-300">Mannschaftsfahrt</a></li>
+                <li><a href="#trainingslager" class="underline hover:text-gray-300">Trainingslager</a></li>
+                <li><a href="#kontakt" class="underline hover:text-gray-300">Kontakt</a></li>
+            </ul>
+        </div>
+
+        <!-- Logo Mittig auf Höhe der Links -->
+        <div class="flex flex-col items-center">
+            <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-32 w-auto mb-2">
+        </div>
+
+        <!-- Unternehmen Links -->
+        <div class="flex flex-col items-start">
+            <h3 class="text-lg font-semibold mb-2">Unternehmen</h3>
+            <a href="impressum.html" class="text-sm underline hover:text-gray-300">Impressum</a>
+        </div>
+
+    </div>
+
+    <!-- Copyright Hinweis leicht erhöht -->
+    <div class="text-center mt-4 text-sm text-gray-400">
+        &copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.
+    </div>
+</footer>
+
+
 
     <script src="script.js"></script>
 </body>
