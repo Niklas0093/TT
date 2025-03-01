@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("hotel-name").textContent = hotel.name;
                 document.getElementById("hotel-image").src = hotel.image;
                 document.getElementById("hotel-image").alt = hotel.name;
-                document.getElementById("hotel-location").textContent = `📍 ${hotel.location}, ${hotel.country}`;
-                document.getElementById("hotel-price").textContent = `💰 ${hotel.price}€ p.P./Nacht`;
                 document.getElementById("hotel-description").textContent = hotel.description;
 
                 // Sterne setzen

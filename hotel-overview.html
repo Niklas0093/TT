@@ -28,9 +28,15 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        h2, h3 { transition: none !important; }
-        a:hover, header a:hover { color: #f2541d !important; }
-        button { background-color: #f2541d !important; }
+h2, h3 { transition: none !important; }
+a:hover, header a:hover { color: #f2541d !important; }
+button { background-color: #f2541d !important; }
+.no-hover:hover, #booking-button:hover { 
+    background-color: #f2541d !important; 
+    color: white !important; 
+    transition: none !important;
+}
+
     </style>
 </head>
 <body class="font-sans bg-dark text-gray-200 flex flex-col min-h-screen">
@@ -61,88 +67,71 @@
         </div>
     </header>
 
-    <!-- Mobile menu -->
-    <div class="md:hidden hidden" id="mobile-menu">
-        <ul class="bg-darker py-2">
-            <li><a href="index.html#deals" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-tag mr-2"></i>Deals</a></li>
-            <li><a href="index.html#mannschaftsfahrt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
-            <li><a href="index.html#trainingslager" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
-            <li><a href="index.html#kontakt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
-        </ul>
-    </div>
-</header>
-
     <!-- Hotel Info -->
-    <main class="container mx-auto py-12 px-6">
-        
-        <!-- Hotelname + Sterne -->
-        <div class="text-center mb-6">
-            <h1 id="hotel-name" class="text-4xl font-bold text-white"></h1>
-            <div id="hotel-stars" class="flex justify-center text-yellow-400 text-2xl mt-2"></div>
+<main class="container mx-auto py-12 px-6 flex gap-8">
+    <!-- Linke Spalte: Bild mit Titel und Sterne -->
+    <div class="w-1/2 flex flex-col items-start">
+        <h1 id="hotel-name" class="text-4xl font-bold text-white mb-2"></h1>
+        <div id="hotel-stars" class="flex text-white text-xl space-x-1 mb-4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <img id="hotel-image" class="w-full h-[500px] object-cover rounded-lg border border-gray-600 shadow-lg mt-auto" src="" alt="Hotel Bild">
+    </div>
+
+    <!-- Rechte Spalte: Beschreibung und Buchungsbutton -->
+    <div class="w-1/2 flex flex-col text-white">
+        <div class="mt-6">
+            <h2 class="text-3xl font-bold mb-4">Beschreibung</h2>
+            <p id="hotel-description" class="text-gray-300 leading-relaxed mb-6"></p>
         </div>
 
-        <!-- Großes Hotelbild -->
-        <div class="w-full max-w-6xl mx-auto">
-            <img id="hotel-image" class="w-full h-[500px] object-cover rounded-lg border border-gray-600 shadow-lg" src="" alt="">
-        </div>
-
-        <!-- Hotelbeschreibung -->
-        <div class="mt-8 text-white text-center max-w-3xl mx-auto">
-            <p id="hotel-location" class="text-lg text-gray-300 mb-2"></p>
-            <p id="hotel-price" class="text-lg font-semibold mb-4"></p>
-            <p id="hotel-description" class="text-gray-300"></p>
-        </div>
-
-        <!-- Suchparameter Anzeige -->
-        <div id="booking-details" class="bg-gray-800 p-4 rounded-lg mt-6 text-white text-center hidden">
+        <!-- Buchungsdetails -->
+        <div id="booking-details" class="bg-gray-800 rounded-lg mt-6 text-white text-left hidden">
             <h2 class="text-lg font-bold mb-2">Ihre Buchungsdetails</h2>
             <p><strong>Zeitraum:</strong> <span id="booking-dates">Nicht angegeben</span></p>
             <p><strong>Gruppengröße:</strong> <span id="booking-group-size">Nicht angegeben</span> Personen</p>
             <p><strong>Reiseart:</strong> <span id="booking-trip-type">Nicht angegeben</span></p>
         </div>
 
-        <!-- Buchungsbutton -->
-        <div class="text-center mt-6">
-            <a id="booking-button" class="bg-secondary text-white px-6 py-3 rounded-lg mt-4 inline-block hover:bg-opacity-90 transition">
-                Jetzt buchen
+        <!-- Buchungsbutton linksbündig -->
+        <div class="mt-6">
+            <a id="booking-button" class="bg-accent text-white px-6 py-3 rounded-lg inline-block transition-none no-hover" 
+               onclick="event.preventDefault();">
+                Jetzt buchen!
             </a>
         </div>
-
-    </main>
-
-<!-- Footer -->
-<footer class="bg-darker text-white p-8 mt-auto">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0">
-        
-        <!-- Schnelllinks Links -->
-        <div class="flex flex-col items-start">
-            <h3 class="text-lg font-semibold mb-2">Schnelllinks</h3>
-            <ul class="space-y-1 text-sm">
-                <li><a href="index.html#deals" class="underline hover:text-gray-300">Top Deals</a></li>
-                <li><a href="index.html#mannschaftsfahrt" class="underline hover:text-gray-300">Mannschaftsfahrt</a></li>
-                <li><a href="index.html#trainingslager" class="underline hover:text-gray-300">Trainingslager</a></li>
-                <li><a href="index.html#kontakt" class="underline hover:text-gray-300">Kontakt</a></li>
-            </ul>
-        </div>
-
-        <!-- Logo Mittig auf Höhe der Links -->
-        <div class="flex flex-col items-center">
-            <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-32 w-auto mb-2">
-        </div>
-
-        <!-- Unternehmen Links -->
-        <div class="flex flex-col items-start">
-            <h3 class="text-lg font-semibold mb-2">Unternehmen</h3>
-            <a href="impressum.html" class="text-sm underline hover:text-gray-300">Impressum</a>
-        </div>
-
     </div>
+</main>
 
-    <!-- Copyright Hinweis leicht erhöht -->
-    <div class="text-center mt-4 text-sm text-gray-400">
-        &copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.
-    </div>
-</footer>
+
+    <!-- Footer -->
+    <footer class="bg-darker text-white p-8 mt-auto">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0">
+            <div class="flex flex-col items-start">
+                <h3 class="text-lg font-semibold mb-2">Schnelllinks</h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="index.html#deals" class="underline hover:text-gray-300">Top Deals</a></li>
+                    <li><a href="index.html#mannschaftsfahrt" class="underline hover:text-gray-300">Mannschaftsfahrt</a></li>
+                    <li><a href="index.html#trainingslager" class="underline hover:text-gray-300">Trainingslager</a></li>
+                    <li><a href="index.html#kontakt" class="underline hover:text-gray-300">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="flex flex-col items-center">
+                <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-32 w-auto mb-2">
+            </div>
+            <div class="flex flex-col items-start">
+                <h3 class="text-lg font-semibold mb-2">Unternehmen</h3>
+                <a href="impressum.html" class="text-sm underline hover:text-gray-300">Impressum</a>
+            </div>
+        </div>
+        <div class="text-center mt-4 text-sm text-gray-400">
+            &copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.
+        </div>
+    </footer>
 
     <script defer src="hotel-overview.js"></script>
     <script defer src="script.js"></script>
