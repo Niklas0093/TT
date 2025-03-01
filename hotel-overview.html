@@ -44,8 +44,33 @@
                 </a>
                 <h1 class="text-lg text-white ml-4 font-semibold">Starke Teams, starke Reisen</h1>
             </div>
+
+            <!-- Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                    <li><a href="index.html#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                    <li><a href="index.html#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                    <li><a href="index.html#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <button class="md:hidden text-gray-200 focus:outline-none !bg-transparent" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <ul class="bg-darker py-2">
+            <li><a href="index.html#deals" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+            <li><a href="index.html#mannschaftsfahrt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+            <li><a href="index.html#trainingslager" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+            <li><a href="index.html#kontakt" class="block px-4 py-2 hover:bg-dark"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+        </ul>
+    </div>
+</header>
 
     <!-- Hotel Info -->
     <main class="container mx-auto py-12 px-6">
@@ -85,11 +110,39 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-darker text-white text-center p-6 mt-auto">
-        <p class="mb-2">&copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.</p>
-        <a href="impressum.html" class="underline hover:text-gray-300">Impressum</a>
-    </footer>
+<!-- Footer -->
+<footer class="bg-darker text-white p-8 mt-auto">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0">
+        
+        <!-- Schnelllinks Links -->
+        <div class="flex flex-col items-start">
+            <h3 class="text-lg font-semibold mb-2">Schnelllinks</h3>
+            <ul class="space-y-1 text-sm">
+                <li><a href="index.html#deals" class="underline hover:text-gray-300">Top Deals</a></li>
+                <li><a href="index.html#mannschaftsfahrt" class="underline hover:text-gray-300">Mannschaftsfahrt</a></li>
+                <li><a href="index.html#trainingslager" class="underline hover:text-gray-300">Trainingslager</a></li>
+                <li><a href="index.html#kontakt" class="underline hover:text-gray-300">Kontakt</a></li>
+            </ul>
+        </div>
+
+        <!-- Logo Mittig auf Höhe der Links -->
+        <div class="flex flex-col items-center">
+            <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-32 w-auto mb-2">
+        </div>
+
+        <!-- Unternehmen Links -->
+        <div class="flex flex-col items-start">
+            <h3 class="text-lg font-semibold mb-2">Unternehmen</h3>
+            <a href="impressum.html" class="text-sm underline hover:text-gray-300">Impressum</a>
+        </div>
+
+    </div>
+
+    <!-- Copyright Hinweis leicht erhöht -->
+    <div class="text-center mt-4 text-sm text-gray-400">
+        &copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.
+    </div>
+</footer>
 
     <script defer src="hotel-overview.js"></script>
     <script defer src="script.js"></script>

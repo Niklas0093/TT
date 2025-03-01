@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log("🔍 search-results.js wurde geladen!");
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -18,41 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Werte aus URL übernehmen (falls vorhanden)
     startDateInput.value = urlParams.get('start-date') || "";
     endDateInput.value = urlParams.get('end-date') || "";
-    countrySelect.value = urlParams.get('country') || "";
     groupSizeInput.value = urlParams.get('group-size') || 6;
     tripTypeSelect.value = urlParams.get('trip-type') || "";
     priceSlider.value = urlParams.get('max-price') || priceSlider.max;
-    priceValue.textContent = priceSlider.value; // Preisanzeige aktualisieren
+    priceValue.textContent = priceSlider.value;
     starsInput.value = urlParams.get('stars') || "";
+
     
-    // Funktion: Setze Placeholder für leere Datumsfelder
-    function updateDatePlaceholder(input, placeholderText) {
-        if (!input.value) {
-            input.classList.add("placeholder-active");
-            input.setAttribute("data-placeholder", placeholderText);
-            input.type = "text"; 
-            input.value = placeholderText;
-        }
-    }
-
-    function removePlaceholder(input) {
-        if (input.classList.contains("placeholder-active")) {
-            input.classList.remove("placeholder-active");
-            input.value = "";
-            input.type = "date";
-        }
-    }
-
-    // Setze Platzhalter falls kein Datum eingegeben wurde
-    updateDatePlaceholder(startDateInput, "Startdatum");
-    updateDatePlaceholder(endDateInput, "Enddatum");
-
-    startDateInput.addEventListener("focus", () => removePlaceholder(startDateInput));
-    endDateInput.addEventListener("focus", () => removePlaceholder(endDateInput));
-
-    startDateInput.addEventListener("blur", () => updateDatePlaceholder(startDateInput, "Startdatum"));
-    endDateInput.addEventListener("blur", () => updateDatePlaceholder(endDateInput, "Enddatum"));
-
     // Dynamische Länder-Dropdown-Befüllung
     fetch("assets/data/hotels.json")
         .then(response => response.json())
@@ -67,25 +39,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 countrySelect.appendChild(option);
             });
 
-            countrySelect.value = urlParams.get('country') || "";
+            const initialCountry = urlParams.get('country') || "";
+            countrySelect.value = initialCountry;
+            console.log("🌍 Verfügbare Länder:", [...countries]);
+            console.log("🌍 Gewähltes Land im Filter:", initialCountry);
+
+            filterAndRenderHotels();
         })
         .catch(error => console.error("❌ Fehler beim Laden der Länder:", error));
 
     function filterAndRenderHotels() {
         console.log("✅ Filter wird angewendet...");
 
-        const startDate = startDateInput.value.includes("Startdatum") ? "" : startDateInput.value;
-        const endDate = endDateInput.value.includes("Enddatum") ? "" : endDateInput.value;
-        const country = countrySelect.value;
-        let groupSize = parseInt(groupSizeInput.value);
-        const tripType = tripTypeSelect.value;
-        const maxPrice = parseInt(priceSlider.value);
+        const startDate = startDateInput.value || "";
+        const endDate = endDateInput.value || "";
+        const country = countrySelect.value || "";
+        let groupSize = parseInt(groupSizeInput.value) || 6;
+        const tripType = tripTypeSelect.value || "";
+        const maxPrice = parseInt(priceSlider.value) || 500;
         const minStars = parseInt(starsInput.value) || 0;
         const poolChecked = poolCheckbox.checked;
         const fitnessChecked = fitnessCheckbox.checked;
 
-        // Gruppengröße darf nicht unter 6 fallen
-        if (!groupSize || groupSize < 6) {
+        console.log(`🔍 Aktuelle Filter:
+            Startdatum: ${startDate}
+            Enddatum: ${endDate}
+            Land: ${country}
+            Gruppengröße: ${groupSize}
+            Art der Reise: ${tripType}
+            Maximaler Preis: ${maxPrice}
+            Mindeststerne: ${minStars}
+            Pool: ${poolChecked}
+            Fitnessstudio: ${fitnessChecked}`);
+
+        if (groupSize < 6) {
             groupSize = 6;
             groupSizeInput.value = 6;
         }
@@ -93,15 +80,34 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch("assets/data/hotels.json")
             .then(response => response.json())
             .then(data => {
-                const filteredHotels = data.hotels.filter(hotel =>
-                    (country === "" || hotel.country === country) &&
-                    (tripType === "" || hotel.trip_types.includes(tripType)) &&
-                    (hotel.price <= maxPrice) &&
-                    (hotel.stars >= minStars) &&
-                    (!poolChecked || hotel.facilities.includes("Pool")) &&
-                    (!fitnessChecked || hotel.facilities.includes("Fitnessstudio")) &&
-                    hasEnoughAvailableRooms(hotel, groupSize, startDate, endDate)
-                );
+                const filteredHotels = data.hotels.filter(hotel => {
+                    const matchesCountry = !country || hotel.country.toLowerCase() === country.toLowerCase();
+                    const matchesTripType = !tripType || hotel.trip_types.includes(tripType);
+                    const matchesPrice = hotel.price <= maxPrice;
+                    const matchesStars = hotel.stars >= minStars;
+                    const matchesPool = !poolChecked || hotel.facilities.includes("Pool");
+                    const matchesFitness = !fitnessChecked || hotel.facilities.includes("Fitnessstudio");
+                    const matchesRooms = hasEnoughAvailableRooms(hotel, groupSize, startDate, endDate);
+
+                    console.log(`🏨 Überprüfung: ${hotel.name} 
+                        Land: ${hotel.country} (${matchesCountry})
+                        Art der Reise: ${hotel.trip_types} (${matchesTripType})
+                        Preis: ${hotel.price} (${matchesPrice})
+                        Sterne: ${hotel.stars} (${matchesStars})
+                        Pool: ${matchesPool}
+                        Fitnessstudio: ${matchesFitness}
+                        Verfügbare Zimmer: ${matchesRooms}`);
+
+                    return (
+                        matchesCountry &&
+                        matchesTripType &&
+                        matchesPrice &&
+                        matchesStars &&
+                        matchesPool &&
+                        matchesFitness &&
+                        matchesRooms
+                    );
+                });
 
                 renderHotels(filteredHotels);
             })
@@ -128,18 +134,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function renderHotels(hotels) {
         const resultsContainer = document.getElementById("search-results");
-        resultsContainer.innerHTML = hotels.length === 0 ? 
+        resultsContainer.innerHTML = hotels.length === 0 ?
             "<p class='text-white text-center'>🚫 Keine passenden Hotels gefunden.</p>" :
             hotels.map(hotel => {
                 const params = new URLSearchParams({
                     hotel_id: hotel.hotel_id,
-                    start_date: document.getElementById("filter-start-date").value || "",
-                    end_date: document.getElementById("filter-end-date").value || "",
-                    group_size: document.getElementById("filter-group-size").value || 6,
-                    country: document.getElementById("filter-country").value || "",
-                    trip_type: document.getElementById("filter-trip-type").value || "",
+                    start_date: startDateInput.value || "",
+                    end_date: endDateInput.value || "",
+                    group_size: groupSizeInput.value || 6,
+                    country: countrySelect.value || "",
+                    trip_type: tripTypeSelect.value || "",
                 }).toString();
-    
+
                 return `
                     <div class="relative bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700 transition-transform transform hover:scale-105">
                         <img src="${hotel.image}" class="w-full h-64 object-cover rounded-lg mb-4">
@@ -147,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="text-gray-400">📍 ${hotel.location}, ${hotel.country}</p>
                         <p class="text-gray-400">⭐ ${hotel.stars} Sterne | 🏆 ${hotel.rating.toFixed(1)}</p>
                         <p class="text-gray-400">💰 ${hotel.price}€ p.P./Nacht</p>
-                        <p class="text-gray-400 mb-2">🏊‍♂️ Ausstattung: ${hotel.facilities.join(", ")}</p>
+                        <p class="text-gray-400 mb-2">🏊‍♂️ Ausstattung: ${hotel.facilities?.join(", ") || "Keine Angaben"}</p>
                         <button class="details-btn bg-primary text-white px-4 py-2 rounded-lg w-full mt-2" 
                             onclick="window.location.href='hotel-overview.html?${params}'">
                             <i class="fas fa-info-circle"></i> Details
@@ -156,9 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 `;
             }).join('');
     }
-    
 
-    // Automatische Filteraktualisierung bei Änderungen
     const filterElements = [
         "filter-start-date",
         "filter-end-date",
@@ -175,12 +179,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(id).addEventListener("change", filterAndRenderHotels);
     });
 
-    // Preis-Slider live aktualisieren
     priceSlider.addEventListener("input", function () {
         priceValue.textContent = this.value;
         filterAndRenderHotels();
     });
-
-    // Initiale Filteranwendung beim Laden der Seite
-    filterAndRenderHotels();
 });

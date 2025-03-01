@@ -29,7 +29,16 @@
     <style>
         html { scroll-behavior: smooth; }
         h2, h3 { transition: none !important; }
-        a:hover, header a:hover { color: #f2541d !important; }
+
+        /* Nur im Header soll der orangefarbene Hover aktiv sein */
+        header a:hover {
+            color: #f2541d !important;
+        }
+
+        /* Entferne den orangen Hover-Effekt im restlichen Dokument */
+        body a:hover:not(header a) {
+            color: inherit !important;
+        }
     </style>
 </head>
 <body class="font-sans bg-dark text-gray-200 flex flex-col min-h-screen">
@@ -47,10 +56,10 @@
                 <!-- Navigation -->
                 <nav class="hidden md:block">
                     <ul class="flex space-x-8">
-                        <li><a href="#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
-                        <li><a href="#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
-                        <li><a href="#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
-                        <li><a href="#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
+                        <li><a href="index.html#deals" class="font-medium"><i class="fas fa-tag mr-2"></i>Deals</a></li>
+                        <li><a href="index.html#mannschaftsfahrt" class="font-medium"><i class="fas fa-users mr-2"></i>Mannschaftsfahrt</a></li>
+                        <li><a href="index.html#trainingslager" class="font-medium"><i class="fas fa-dumbbell mr-2"></i>Trainingslager</a></li>
+                        <li><a href="index.html#kontakt" class="font-medium"><i class="fas fa-envelope mr-2"></i>Kontakt</a></li>
                     </ul>
                 </nav>
     
@@ -73,7 +82,7 @@
 
     <!-- Impressum Inhalt -->
     <main class="container mx-auto py-16">
-        <h1 class="text-4xl font-bold text-white text-center mb-10 hover:text-accent transition-colors">Impressum</h1>
+        <h1 class="text-4xl font-bold text-white text-center mb-10">Impressum</h1>
         <div class="bg-darker p-8 shadow-lg rounded-lg max-w-2xl mx-auto">
             <p class="mb-4"><strong>TeamTravel GmbH</strong></p>
             <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Musterstraße 1, 12345 Musterstadt</p>
@@ -85,10 +94,38 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-darker text-gray-400 text-center p-6 mt-auto">
-        <a href="index.html" class="underline hover:text-gray-200"><i class="fas fa-home mr-2"></i>Zurück zur Startseite</a>
-    </footer>
+<!-- Footer -->
+<footer class="bg-darker text-white p-8 mt-auto">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-start space-y-6 md:space-y-0">
+        
+        <!-- Schnelllinks Links -->
+        <div class="flex flex-col items-start">
+            <h3 class="text-lg font-semibold mb-2">Schnelllinks</h3>
+            <ul class="space-y-1 text-sm">
+                <li><a href="index.html#deals" class="underline hover:text-gray-300">Top Deals</a></li>
+                <li><a href="index.html#mannschaftsfahrt" class="underline hover:text-gray-300">Mannschaftsfahrt</a></li>
+                <li><a href="index.html#trainingslager" class="underline hover:text-gray-300">Trainingslager</a></li>
+                <li><a href="index.html#kontakt" class="underline hover:text-gray-300">Kontakt</a></li>
+            </ul>
+        </div>
+
+        <!-- Logo Mittig auf Höhe der Links -->
+        <div class="flex flex-col items-center">
+            <img src="assets/images/Logo.png" alt="TeamTravel Logo" class="h-32 w-auto mb-2">
+        </div>
+
+        <!-- Unternehmen Links -->
+        <div class="flex flex-col items-start">
+            <a href="index.html" class="underline hover:text-gray-300"><i class="fas fa-home mr-2"></i>Zurück zur Startseite</a>
+        </div>
+
+    </div>
+
+    <!-- Copyright Hinweis leicht erhöht -->
+    <div class="text-center mt-4 text-sm text-gray-400">
+        &copy; 2025 TeamTravel GmbH. Alle Rechte vorbehalten.
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
